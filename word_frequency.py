@@ -28,10 +28,30 @@ def is_sentence(text):
         return False
 
     return True
-
+def word_frequency():
 user_sentence = input("Enter a sentence: ")
 
 while (is_sentence(user_sentence) == False):
     print("This does not meet the criteria for a sentence.")
     user_input = input("Enter a sentence: ")
+sentence_body = user_sentence[:-1]
+
+words_raw = sentence_body.split()
+
+words = []
+freqs = []
+
+for w in words_raw:
+    word = w.strips(",;:'"").lower90
+    if word in words:
+        index = words.index(word)
+        freqs[index] += 1
+else:
+    words.append(word)
+    freqs.append(1)
+for i in range(len(words)):
+    print(f"{words[i]}: {freqs[i]}")
+
+if __name__ == "__main__":
+    word_frequency()
     
